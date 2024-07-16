@@ -1,0 +1,44 @@
+/* Reset CSS to remove default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  position: relative; /* Contêiner pai deve ser posicionado */
+  height: 100vh;
+  width: 100vw;
+  background-color: white; /* Se você quiser uma tela branca */
+}
+
+.entrar_consulta {
+  position: absolute; /* Botão posicionado absolutamente */
+  top: 80%; /* Distância do topo */
+  left: 44%; /* Distância da esquerda */
+  transform: translateY(-50%); /* Ajusta para compensar a altura do botão */
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.agendar_consulta {
+  position: absolute; /* Botão posicionado absolutamente */
+  top: 70%; /* Distância do topo */
+  left: 44.2%; /* Distância da esquerda */
+  transform: translateY(-50%); /* Ajusta para compensar a altura do botão */
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.medica_idosa {
+  width: 60%;
+  max-width: 400px; /* Ajuste conforme necessário */
+  height: 60%;
+}
