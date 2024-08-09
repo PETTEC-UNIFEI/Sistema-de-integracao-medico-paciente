@@ -1,13 +1,86 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Integração Médico Paciente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Sistema de Integração Médico Paciente</h1>
+
+    <!-- Formulário de Login -->
+    <div id="loginForm">
+        <h2>Entrar</h2>
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" required>
+        <label for="loginPassword">Senha:</label>
+        <input type="password" id="loginPassword" required>
+        <button onclick="login()">Entrar</button>
+        <p>Não tem uma conta? <a href="#" onclick="showRegisterForm()">Registre-se aqui</a></p>
+    </div>
+
+    <!-- Formulário de Registro -->
+    <div id="registerForm" style="display:none;">
+        <h2>Registrar</h2>
+        <label for="registerType">Eu sou:</label>
+        <select id="registerType" onchange="toggleCRM()">
+            <option value="patient">Paciente</option>
+            <option value="doctor">Médico</option>
+        </select>
+        <label for="registerEmail">Email:</label>
+        <input type="email" id="registerEmail" required>
+        <label for="registerUsername">Nome de Usuário:</label>
+        <input type="text" id="registerUsername" required>
+        <label for="registerPassword">Senha:</label>
+        <input type="password" id="registerPassword" required>
+        <div id="crmField" style="display:none;">
+            <label for="registerCRM">CRM:</label>
+            <input type="text" id="registerCRM">
+            <label for="registerCity">Cidade:</label>
+            <input type="text" id="registerCity">
+            <label for="registerState">Estado:</label>
+            <input type="text" id="registerState">
+        </div>
+        <button onclick="register()">Registrar</button>
+        <p>Já tem uma conta? <a href="#" onclick="showLoginForm()">Entre aqui</a></p>
+    </div>
+
+    <!-- Agenda do Médico -->
+    <div id="doctorSchedule" style="display:none;">
+        <h2>Agenda do Médico</h2>
+        <div id="schedule"></div>
+        <h3>Mensagens dos Pacientes</h3>
+        <div id="patientMessages"></div>
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <!-- Agendamento do Paciente -->
+    <div id="patientBooking" style="display:none;">
+        <h2>Agendar uma Consulta</h2>
+        <label for="selectCity">Selecionar Cidade:</label>
+        <select id="selectCity" onchange="loadDoctorsByCity()"></select>
+        <label for="selectDoctor">Selecionar Médico:</label>
+        <select id="selectDoctor" onchange="loadAvailableTimes()"></select>
+        <label for="selectDate">Selecionar Data:</label>
+        <input type="date" id="selectDate" onchange="loadAvailableTimes()">
+        <label for="selectTime">Selecionar Horário:</label>
+        <select id="selectTime"></select>
+        <label for="selectType">Tipo de Consulta:</label>
+        <select id="selectType">
+            <option value="presencial">Presencial</option>
+            <option value="online">Online</option>
+        </select>
+        <button onclick="bookAppointment()">Agendar Consulta</button>
+        <h3>Suas Consultas</h3>
+        <div id="patientAppointments"></div>
+        <h3>Enviar Dúvida ao Médico</h3>
+        <textarea id="patientMessage" placeholder="Escreva sua dúvida aqui"></textarea>
+        <button onclick="sendMessage()">Enviar Mensagem</button>
+        <div id="chat"></div>
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
 </html>
